@@ -20,6 +20,7 @@ app.use("/products", require("./routes/products"));
 app.use("/users", require("./routes/user"));
 app.use("/wishlist", require("./routes/wishlist"));
 app.use("/cart", require("./routes/cart"));
+app.use("/addresses", require("./routes/address"));
 
 app.listen(process.env.PORT || PORT, () => {
   console.log(`listening to port 8080`);
