@@ -24,6 +24,8 @@ app.use("/addresses", require("./routes/address"));
 app.use("/videos", require("./routes/videos"));
 app.use("/playlist", require("./routes/playlist"));
 app.use("/notes", require("./routes/notes"));
+app.use("/quizzes", require("./routes/quizzes"));
+app.use("/quizCategories", require("./routes/quizCategory"));
 
 app.listen(process.env.PORT || PORT, () => {
   console.log(`listening to port 8080`);
