@@ -80,7 +80,54 @@ const AuthenticateUser = async (req, res) => {
   }
 };
 
+const getUserDetailsFromDb = async (req, res) => {
+  try {
+    const { user } = req;
+    res.status(200).json({
+      response: {
+        user,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      message: "Request failed please check errorMessage key for more details",
+      errorMessage: error.message,
+    });
+  }
+};
+
+const editUserProfile = async (req, res) => {
+  try {
+    const { firstName, lastName } = req.body;
+
+    User.findByIdAndUpdate(
+      req.user._id,
+      {
+        $set: { firstName, lastName },
+      },
+      { new: true }
+    ).exec((err, user) => {
+      if (user) {
+        res.status(200).json({
+          response: {
+            user,
+          },
+        });
+      } else console.log(err);
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      message: "Request failed please check errorMessage key for more details",
+      errorMessage: error.message,
+    });
+  }
+};
+
 module.exports = {
   createNewUser,
   AuthenticateUser,
+  getUserDetailsFromDb,
+  editUserProfile,
 };
