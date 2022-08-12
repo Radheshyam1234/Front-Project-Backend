@@ -16,6 +16,7 @@ app.get("/", (req, res) => {
   res.send("Hello from backend");
 });
 
+app.use("/products", require("./routes/products"));
 app.use("/users", require("./routes/user"));
 
 app.listen(process.env.PORT || PORT, () => {
