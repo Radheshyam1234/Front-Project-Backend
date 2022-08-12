@@ -16,6 +16,8 @@ app.get("/", (req, res) => {
   res.send("Hello from backend");
 });
 
+app.use("/users", require("./routes/user"));
+
 app.listen(process.env.PORT || PORT, () => {
   console.log(`listening to port 8080`);
 });
